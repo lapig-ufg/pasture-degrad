@@ -63,7 +63,7 @@ var getBRNDVI = LANDSAT_GRID_List.map(function(feature){
                   .mask(mask)
                   .copyProperties(img);
       })
-      .reduce(ee.Reducer.median())
+      .reduce(ee.Reducer.mean())
       .rename([ee.String('L5_NDVI_2010'),ee.String('month_band_2010')])//.cat(ee.Number(month).toInt()))
       .set({Month: month,WRS_PATH: WRS_PATH,WRS_ROW: WRS_ROW});
       
@@ -77,7 +77,7 @@ var getBRNDVI = LANDSAT_GRID_List.map(function(feature){
                   .mask(mask)
                   .copyProperties(img);
       })
-      .reduce(ee.Reducer.median())
+      .reduce(ee.Reducer.mean())
       .rename([ee.String('L8_NDVI_2018'),ee.String('month_band_2018')])//.cat(ee.Number(month).toInt()))
       .set({Month: month,WRS_PATH: WRS_PATH,WRS_ROW: WRS_ROW});
     return ee.Image([fillMonth_2010,fillMonth_2018]);
